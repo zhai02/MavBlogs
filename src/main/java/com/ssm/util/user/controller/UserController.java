@@ -11,7 +11,7 @@ import com.ssm.util.user.data.User;
 import com.ssm.util.user.service.IUserService;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("/")
 public class UserController {
 	@Resource
 	private IUserService userService;
@@ -22,5 +22,10 @@ public class UserController {
 		User user = this.userService.getUserById(userId);
 		model.addAttribute("user", user);
 		return "showUser";
+	}
+	
+	@RequestMapping("/login")
+	public String forLogin(HttpServletRequest request) {
+		return "login";
 	}
 }

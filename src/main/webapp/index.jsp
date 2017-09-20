@@ -1,5 +1,4 @@
-<html>
-<body>
-<h2>Hello World!1111</h2>
-</body>
-</html>
+<%@ page contentType="text/html;charset=GBK" %>
+<%
+ response.sendRedirect(request.getContextPath()+"/login.do");
+%>
