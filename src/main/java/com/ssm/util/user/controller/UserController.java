@@ -24,8 +24,14 @@ public class UserController {
 		return "showUser";
 	}
 	
-	@RequestMapping("/login")
+	@RequestMapping("/forLogin")
 	public String forLogin(HttpServletRequest request) {
 		return "login";
 	}
+	
+	@RequestMapping("/forRegister")
+	public String forRegister(HttpServletRequest request) {
+		return "register";
+	}
+	
 }

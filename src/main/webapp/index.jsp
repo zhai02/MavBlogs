@@ -1,4 +1,4 @@
 <%@ page contentType="text/html;charset=GBK" %>
 <%
- response.sendRedirect(request.getContextPath()+"/login.do");
+ response.sendRedirect(request.getContextPath()+"/forLogin.do");
 %>
