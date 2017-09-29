@@ -19,4 +19,15 @@ public class UserServiceImpl implements IUserService{
 	public User getUserById(int userId) {
 		return this.userDao.selectByPrimaryKey(userId);
 	}
+	
+	public String registerCheck(String username,String email) {
+		int userCount = this.userDao.checkUsername(username);
+		int emailCount = this.userDao.checkEmail(email);
+		String resultStr = "{\"userCount\":\""+userCount+"\",\"emailCount\":\""+emailCount+"\"}";
+		return resultStr;
+	}
+	
+	public int insertUserInfo(User user) {
+		return this.userDao.insertUserInfo(user);
+	}
 }

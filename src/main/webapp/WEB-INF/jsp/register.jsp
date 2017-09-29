@@ -6,6 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link href="<%=request.getContextPath() %>/skin/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="<%=request.getContextPath() %>/skin/js/vue.js"></script>
+<script src="<%=request.getContextPath() %>/skin/js/axios.js"></script>
 <!--
 <script src="<%=request.getContextPath() %>/skin/js/jquery-3.2.1.min.js"></script>
 <script src="<%=request.getContextPath() %>/skin/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -94,11 +95,11 @@
 							</label>
 						</div>
 						<div class="form-group">
-							<label for="inputPhone" class="col-sm-3 control-label" v-model="phone">
+							<label for="inputPhone" class="col-sm-3 control-label">
 								手&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp机
 							</label>
 							<div class="col-sm-6">
-								<input type="text" class="form-control" id="inputPhone" />
+								<input type="text" class="form-control" id="inputPhone" v-model="phone"/>
 							</div>
 						</div>
 						<div class="form-group">
@@ -150,9 +151,27 @@ var app = new Vue({
 					this.alertMsg=true;
 				}else{
 					//校验用户名是否存在
+					var instance = axios.create({
+					    headers: {'content-type': 'application/x-www-form-urlencoded'}
+					});
+					instance.get('registerCheck.do',{
+						params: {
+							username:this.username,
+							email:this.email
+						}
+					})
+					.then(function(resp){
+						console.log(resp);
+					})
+					.catch(function (error) {
+    					console.log(error);
+ 				 	});
 					//提交表单代码
 				}
 			}
+		},
+		onSubmit:function(){
+			
 		}
 	}
 });
