@@ -149,6 +149,7 @@ var app = new Vue({
 					this.message='确认密码输入不正确！';
 					this.alertMsg=true;
 				}else{
+					//校验用户名是否存在
 					//提交表单代码
 				}
 			}
